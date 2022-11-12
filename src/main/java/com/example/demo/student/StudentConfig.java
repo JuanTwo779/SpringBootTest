@@ -17,15 +17,13 @@ public class StudentConfig {
             Student juan = new Student(
                     "Juan",
                     "juanmangubat@gmail.com",
-                    LocalDate.of(2000, Month.AUGUST, 11),
-                    22
+                    LocalDate.of(2000, Month.AUGUST, 11)
             );
 
             Student katie = new Student(
                     "Katie",
                     "ktmang@gmail.com",
-                    LocalDate.of(1999, Month.APRIL, 15),
-                    23
+                    LocalDate.of(1999, Month.APRIL, 15)
             );
 
             repository.saveAll(
