@@ -4,10 +4,10 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.Period;
 
-@Entity
-@Table
+@Entity //Class is an entity that is mapped to DB
+@Table //Name of table
 public class Student {
-    @Id
+    @Id //Specifies primary key of entity
     @SequenceGenerator(
             name = "student_sequence",
             sequenceName = "student_sequence",
@@ -22,7 +22,7 @@ public class Student {
     private String email;
     private LocalDate dob;
 
-    @Transient
+    @Transient //ignored by mapping framework, not store in DB
     private Integer age;
 
     public Student() {
