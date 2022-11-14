@@ -27,4 +27,9 @@ public class StudentController {
         //RequestBody maps student from client into parameter student
         studentService.addNewStudent(student);
     }
+
+    @DeleteMapping(path = "{studentId}")//delete data from DB using ID
+    public void deleteStudent(@PathVariable("studentId") Long studentId){
+        studentService.deleteStudent(studentId);
+    }
 }
