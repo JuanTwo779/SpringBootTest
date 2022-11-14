@@ -1,14 +1,12 @@
 package com.example.demo.student;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-@RequestMapping(path = "api/v2/student")
+@RestController //API layer - class for handling requests
+@RequestMapping(path = "api/v2/student") //Handles mapping HTTP requests to methods in Rest Controller
 public class StudentController {
 
     private final StudentService studentService;
@@ -18,8 +16,15 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @GetMapping
+    @GetMapping//acquire data from DB
     public List<Student> getStudents(){
         return studentService.getStudents();
+        //get method to acquire data from DB
+    }
+
+    @PostMapping//sends payload to server DB
+    public void registerNewStudent (@RequestBody Student student){
+        //RequestBody maps student from client into parameter student
+        studentService.addNewStudent(student);
     }
 }
