@@ -3,6 +3,7 @@ package com.example.demo.student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @RestController //API layer - class for handling requests
@@ -31,5 +32,13 @@ public class StudentController {
     @DeleteMapping(path = "{studentId}")//delete data from DB using ID
     public void deleteStudent(@PathVariable("studentId") Long studentId){
         studentService.deleteStudent(studentId);
+    }
+
+    @PutMapping(path = "{studentId}")//change student details based on ID
+    public void updateStudent(
+            @PathVariable("studentId") Long studentId,
+            @RequestParam(required = false)String name,
+            @RequestParam(required = false)String email){
+        studentService.updateStudent(studentId, name, email);
     }
 }
